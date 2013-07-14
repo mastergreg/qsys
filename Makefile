@@ -1,7 +1,7 @@
 TARGET = qsyssim
 CC = g++
 CCFLAGS +=
-OPT = 2
+OPT = 3
 
 DEBUG = "n"
 

@@ -1,0 +1,126 @@
+\include{preamble}
+
+\begin{document}
+
+\include{title/title}
+
+
+
+
+
+\pagebreak
+\section*{Εισαγωγή}
+
+Στην εργασία αυτή προσομοιώσαμε ένα σύστημα αναμονής M/M/1/12 με κατώφλι
+buffer Κ. Οι αφίξεις ακολοθούν ρυθμό Poisson, οι εξυπηρετήσεις εκθετικο,
+έχουμε έναν εξυπηρετητή και μέγιστο αριθμό πελατών 12. Το κατώφλι του
+streaming buffer είναι $1 \leq K \leq 11 $
+
+\section{Η πιθανότητα το σύστημα να βρίσκεται στην κατάσταση s, $P_s(K)$, για όλες τις
+δυνατές καταστάσεις του συστήματος s και τις τιμές του κατωφλίου Κ.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/3_a_propabilities.pdf}
+    \caption{λ = 3, K=0,1,2,3,4,5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/3_b_propabilities.pdf}
+    \caption{λ = 3, K=6,7,8,9,10,11}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/5_a_propabilities.pdf}
+    \caption{λ = 5, K=0,1,2,3,4,5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/5_b_propabilities.pdf}
+    \caption{λ = 5, K=6,7,8,9,10,11}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/12_a_propabilities.pdf}
+    \caption{λ = 12, K=0,1,2,3,4,5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/12_b_propabilities.pdf}
+    \caption{λ = 12, K=6,7,8,9,10,11}
+\end{figure}
+
+\section{Η πιθανότητα υπερχείλισης του συστήματος $P_N(K)$ σαν συνάρτηση του
+    κατωφλίου Κ.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/3_2_propabilities.pdf}
+    \caption{λ = 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/5_2_propabilities.pdf}
+    \caption{λ = 5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/12_2_propabilities.pdf}
+    \caption{λ = 12}
+\end{figure}
+
+\section{Ο μέσος αριθμός πακέτων στο σύστημα $E_N(K)$ σαν συνάρτηση του κατωφλίου Κ.}
+\[
+    E_N = \sum_{i=0}^{11}i*P_{i}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/e_n.pdf}
+    \caption{$E_N(K)$}
+\end{figure}
+
+\section{H μέση ρυθμαπόδοση του συστήματος γ(Κ) σαν συνάρτηση του κατωφλίου Κ.}
+\[
+    \gamma = \lambda \cdot (1-P_{bl})
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/g.pdf}
+    \caption{γ(Κ)}
+\end{figure}
+
+\section{H μέση καθυστέρηση πακέτου στο σύστημα $T_d(K)$ σαν συνάρτηση του
+    κατωφλίου Κ.}
+\[
+    E[T] = \frac{E[N]/\gamma}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{files/t.pdf}
+    \caption{T(Κ)}
+\end{figure}
+
+\section*{Παρατηρήσεις}
+\begin{itemize}
+        \item Για Κ = 1 το σύστημα είναι μια τυπική ουρά Μ/Μ/1/12. 
+        \item Παρατηρήσαμε πως για μικρό λ η ουρά δε γεμίζει συνεπώς το
+            μεγαλύτερο μέρος του χρόνου του συστήματος καταναλώνεται στο
+            buffering. Αυτό φαίνεται και από το πολύ μικρό $P_{bl}$.
+        \item Για λ = 12 έχουμε $\frac{\labmda}{\mhi} > 1$ συνεπώς εκεί
+            εμφανίζεται μεγάλη πιθανότητα απόρριψης.
+\end{itemize}
+
+\pagebreak
+\section*{Πηγαίος Κώδικας}
+
+\inputminted[linenos,fontsize=\scriptsize,frame=leftline]{cpp}{files/main.cpp}
+
+\end{document}
